@@ -1,0 +1,150 @@
+{
+  "features": [
+    "indoor_temp",
+    "indoor_humidity",
+    "indoor_CO2",
+    "solarradiation",
+    "vpd",
+    "dew_point",
+    "leaf_wetness_proxy",
+    "day_night_flag"
+  ],
+  "n_features": 8,
+  "dropped_missing": [
+    "indoor_air_velocity"
+  ],
+  "dropped_redundant": [],
+  "valid_range": {
+    "indoor_temp": [
+      0,
+      60
+    ],
+    "indoor_humidity": [
+      0,
+      100
+    ],
+    "indoor_air_velocity": [
+      0,
+      15
+    ],
+    "indoor_CO2": [
+      250,
+      2000
+    ],
+    "solarradiation": [
+      0,
+      1500
+    ],
+    "vpd": [
+      0,
+      10
+    ],
+    "dew_point": [
+      -10,
+      45
+    ]
+  },
+  "impute_policy": {
+    "indoor_temp": [
+      "interp",
+      "median_jam"
+    ],
+    "indoor_humidity": [
+      "interp",
+      "interp"
+    ],
+    "indoor_CO2": [
+      "median_jam",
+      "median_jam"
+    ],
+    "solarradiation": [
+      "interp",
+      "median_jam"
+    ],
+    "dew_point": [
+      "interp",
+      "median_jam"
+    ]
+  },
+  "binary_columns": [
+    "leaf_wetness_proxy",
+    "day_night_flag"
+  ],
+  "vpd": "dihitung ulang dari suhu dan RH (Tetens)",
+  "day_definition": "solarradiation > 1.0 (day_night_flag bergeser sekitar 7 jam dari matahari, tidak dipakai untuk siang)",
+  "window_length_hours": 24,
+  "hop_hours": 1,
+  "block_hours": 168,
+  "val_ratio": 0.15,
+  "test_ratio": 0.15,
+  "seed": 42,
+  "block_assignment_2024": {
+    "train": [
+      3,
+      4,
+      5,
+      7,
+      9,
+      10,
+      15,
+      16,
+      17,
+      18,
+      20,
+      21,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      34,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      52
+    ],
+    "val": [
+      0,
+      6,
+      11,
+      12,
+      19,
+      22,
+      35,
+      43
+    ],
+    "test": [
+      1,
+      2,
+      8,
+      13,
+      14,
+      33,
+      36,
+      51
+    ]
+  },
+  "clean_files": {
+    "2024": "dindigul_greenhouse_indoor_2024_clean.csv",
+    "2025": "dindigul_greenhouse_indoor_2025_clean.csv"
+  },
+  "n_rows": {
+    "2024": 8784,
+    "2025": 8760
+  }
+}

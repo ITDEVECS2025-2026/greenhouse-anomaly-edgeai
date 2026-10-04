@@ -1,0 +1,57 @@
+{
+  "model_type": "ae",
+  "keras_model_name": "greenhouse_ae_model_ae",
+  "window_length_hours": 24,
+  "hop_hours": 1,
+  "features": [
+    "indoor_temp",
+    "indoor_humidity",
+    "indoor_CO2",
+    "solarradiation",
+    "vpd",
+    "dew_point",
+    "leaf_wetness_proxy",
+    "day_night_flag"
+  ],
+  "n_features": 8,
+  "anomaly_threshold": 0.097878597676754,
+  "scaler_file": "greenhouse_scaler.joblib",
+  "sample_file": "greenhouse_normal_anomaly_samples.npz",
+  "day_definition": "solarradiation > 1.0 (day_night_flag TIDAK dipakai untuk menentukan siang)",
+  "architecture": "dense autoencoder (Flatten-Dense-Reshape)",
+  "hidden_units": [
+    128,
+    64
+  ],
+  "bottleneck_dim": 32,
+  "dropped_features": [
+    "indoor_air_velocity"
+  ],
+  "impute_policy": {
+    "indoor_temp": [
+      "interp",
+      "median_jam"
+    ],
+    "indoor_humidity": [
+      "interp",
+      "interp"
+    ],
+    "indoor_CO2": [
+      "median_jam",
+      "median_jam"
+    ],
+    "solarradiation": [
+      "interp",
+      "median_jam"
+    ],
+    "dew_point": [
+      "interp",
+      "median_jam"
+    ]
+  },
+  "clean_data": {
+    "2024": "dindigul_greenhouse_indoor_2024_clean.csv",
+    "2025": "dindigul_greenhouse_indoor_2025_clean.csv"
+  },
+  "feature_analysis_config": "datasets/clean/feature_analysis_config.json"
+}
